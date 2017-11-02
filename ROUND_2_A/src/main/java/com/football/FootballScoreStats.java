@@ -1,3 +1,6 @@
+package com.football;
+
+import com.football.FootballData;
 
 public class FootballScoreStats {
 
