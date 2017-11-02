@@ -1,0 +1,6 @@
+rootProject.name = 'refactoring-golf-java'
+include 'ROUND_1_A'
+include 'ROUND_1_B'
+
+project(':ROUND_1_A').projectDir = "$rootDir/ROUND_1_A" as File
+project(':ROUND_1_B').projectDir = "$rootDir/ROUND_1_B" as File

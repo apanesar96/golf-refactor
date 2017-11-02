@@ -9,24 +9,24 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
- 
+
 
 @RunWith(Parameterized.class)
-public class FibonacciIndexTests {
+public class FibonacciIndexTest {
 
 	private final int expectedIndex;
 	private final long fibonacci;
 
 
-	public FibonacciIndexTests(int expectedIndex, long fibonacci) {
+	public FibonacciIndexTest(int expectedIndex, long fibonacci) {
 		this.expectedIndex = expectedIndex;
 		this.fibonacci = fibonacci;
-	}	
-	
+	}
+
 
 	@Parameters
 	public static List<Object[]> data() {
-		return Arrays.asList(new Object[][] { 
+		return Arrays.asList(new Object[][] {
 				{ 0,0 }, {1,1}, {3,2}, {4,3}, {5,5}, {6,8}, {7,13}, {8,21}, {49, 7778742049L}
 			});
 	}
@@ -35,17 +35,17 @@ public class FibonacciIndexTests {
 	public void findsIndexOfFibonacciNumber() {
 		assertEquals(expectedIndex, findIndexOf(fibonacci));
 	}
-	
+
 	@Test
 	public void whenNumberNotFoundThenIndexIsMinusOne() {
 		assertEquals(-1, findIndexOf(7));
 	}
-	
+
 	@Test
 	public void cannotFindIndexOfNegativeNumber() {
 		assertEquals(-1, findIndexOf(-1));
 	}
-	
+
 	private int findIndexOf(long fibonacci) {
 		if(fibonacci >= 0 && fibonacci < 2){
 			return (int)fibonacci;
@@ -62,7 +62,7 @@ public class FibonacciIndexTests {
 			sequence.add(f);
 			currentIndex++;
 		}
-	
+
 		return indexOfFibonacci;
 	}
 
