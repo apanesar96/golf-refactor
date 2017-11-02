@@ -1,3 +1,5 @@
+package com.fibonacci;
+
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
