@@ -1,3 +1,6 @@
+package com.fibonacci;
+
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -7,12 +10,12 @@ public class FibonacciIndexEdgeCaseTest {
 
     @Test
     public void whenNumberNotFoundThenIndexIsMinusOne() {
-        assertEquals(-1, new FibonacciIndexer().findIndexOf(7));
+        Assert.assertEquals(-1, new FibonacciIndexer().findIndexOf(7));
     }
 
     @Test
     public void cannotFindIndexOfNegativeNumber() {
-        assertEquals(-1, new FibonacciIndexer().findIndexOf(-1));
+        Assert.assertEquals(-1, new FibonacciIndexer().findIndexOf(-1));
     }
 
 

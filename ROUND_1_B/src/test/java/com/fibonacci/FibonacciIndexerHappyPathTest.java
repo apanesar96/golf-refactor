@@ -1,3 +1,6 @@
+package com.fibonacci;
+
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -31,7 +34,7 @@ public class FibonacciIndexerHappyPathTest {
 
     @Test
     public void findsIndexOfFibonacciNumber() {
-        assertEquals(expectedIndex, indexer.findIndexOf(fibonacci));
+        Assert.assertEquals(expectedIndex, indexer.findIndexOf(fibonacci));
     }
 
 }
