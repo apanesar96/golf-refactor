@@ -5,25 +5,39 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
 
+/*
+LOG
+
+1- extract method object fibonnaci function (tryed delegate with less good results)
+
+2- move FibonacciFinder class to new file
+
+3- inline fibonacci creation function in tests function
+
+4- extract field from test of the new fibonacci finder
+
+Follows at Fibonacci Finder
+
+
+ */
+
 @RunWith(Parameterized.class)
 public class FibonacciIndexTest {
 
     private final int expectedIndex;
     private final long fibonacci;
-
+    private FibonacciFinder fibonacciFinder;
 
     public FibonacciIndexTest(int expectedIndex, long fibonacci) {
         this.expectedIndex = expectedIndex;
         this.fibonacci = fibonacci;
     }
-
 
     @Parameters
     public static List<Object[]> data() {
@@ -34,38 +48,17 @@ public class FibonacciIndexTest {
 
     @Test
     public void findsIndexOfFibonacciNumber() {
-        assertEquals(expectedIndex, findIndexOf(fibonacci));
+        fibonacciFinder = new FibonacciFinder();
+        assertEquals(expectedIndex, fibonacciFinder.calculateIndexOf((int)fibonacci));
     }
 
     @Test
     public void whenNumberNotFoundThenIndexIsMinusOne() {
-        assertEquals(-1, findIndexOf(7));
+        assertEquals(-1, new FibonacciFinder().calculateIndexOf(4));
     }
 
     @Test
     public void cannotFindIndexOfNegativeNumber() {
-        assertEquals(-1, findIndexOf(-1));
+        assertEquals(-1, new FibonacciFinder().calculateIndexOf(-1));
     }
-
-    private int findIndexOf(long fibonacci) {
-        if (fibonacci >= 0 && fibonacci < 2) {
-            return (int) fibonacci;
-        }
-        int indexOfFibonacci = -1;
-        int currentIndex = 2;
-        long f = 0;
-        List<Long> sequence = new ArrayList<Long>();
-        sequence.addAll(Arrays.asList(new Long[]{0L, 1L}));
-        while (f < fibonacci) {
-            f = sequence.get(currentIndex - 1) + sequence.get(currentIndex - 2);
-            if (f == fibonacci)
-                indexOfFibonacci = currentIndex;
-            sequence.add(f);
-            currentIndex++;
-        }
-
-        return indexOfFibonacci;
-    }
-
-
 }
