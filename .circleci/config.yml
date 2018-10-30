@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: gradle/gradle:4.10.2-jdk11
+      - image: gradle:4.10.2-jdk11
     steps:
       - checkout
       - run: gradle build   
