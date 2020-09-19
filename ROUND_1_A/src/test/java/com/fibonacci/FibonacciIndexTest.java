@@ -1,11 +1,11 @@
 package com.fibonacci;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,7 +17,12 @@ public class FibonacciIndexTest {
 
     private final int expectedIndex;
     private final long fibonacci;
+    private FibonacciIndex fibonacciIndex;
 
+    @Before
+    public void setUp() {
+        fibonacciIndex = new FibonacciIndex();
+    }
 
     public FibonacciIndexTest(int expectedIndex, long fibonacci) {
         this.expectedIndex = expectedIndex;
@@ -34,37 +39,17 @@ public class FibonacciIndexTest {
 
     @Test
     public void findsIndexOfFibonacciNumber() {
-        assertEquals(expectedIndex, findIndexOf(fibonacci));
+        assertEquals(expectedIndex, fibonacciIndex.findIndexOf(fibonacci));
     }
 
     @Test
     public void whenNumberNotFoundThenIndexIsMinusOne() {
-        assertEquals(-1, findIndexOf(7));
+        assertEquals(-1, fibonacciIndex.findIndexOf(7));
     }
 
     @Test
     public void cannotFindIndexOfNegativeNumber() {
-        assertEquals(-1, findIndexOf(-1));
-    }
-
-    private int findIndexOf(long fibonacci) {
-        if (fibonacci >= 0 && fibonacci < 2) {
-            return (int) fibonacci;
-        }
-        int indexOfFibonacci = -1;
-        int currentIndex = 2;
-        long f = 0;
-        List<Long> sequence = new ArrayList<Long>();
-        sequence.addAll(Arrays.asList(new Long[]{0L, 1L}));
-        while (f < fibonacci) {
-            f = sequence.get(currentIndex - 1) + sequence.get(currentIndex - 2);
-            if (f == fibonacci)
-                indexOfFibonacci = currentIndex;
-            sequence.add(f);
-            currentIndex++;
-        }
-
-        return indexOfFibonacci;
+        assertEquals(-1, fibonacciIndex.findIndexOf(-1));
     }
 
 
