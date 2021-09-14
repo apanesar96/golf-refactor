@@ -10,4 +10,6 @@ public class FootballData implements GameData {
         return played;
     }
 
+    }
+
 }
